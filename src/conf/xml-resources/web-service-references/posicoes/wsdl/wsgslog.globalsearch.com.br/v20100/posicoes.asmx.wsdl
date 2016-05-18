@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://systemsat.gslog.webservice/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://systemsat.gslog.webservice/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://systemsat.gslog.webservice/">
+      <s:element name="Lista_UltimasPosicoes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmpCliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Senha" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ObterLocalizacao" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Lista_UltimasPosicoesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Lista_UltimasPosicoesResult" type="tns:ArrayOfPosicao" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPosicao">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Posicao" nillable="true" type="tns:Posicao" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Posicao">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Posicao" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Veiculo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Cliente" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdentificacaoMotorista" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NomeMotorista" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Observacao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Anotacao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isAlerta" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdFornecedorLocalizacao" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescricaoVeiculo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdentificacaoVeiculo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdentificacaoIntegracao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Placa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NomeCliente" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Evento" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescricaoEvento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroSerie" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Direcao" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Velocidade" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="RPM" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Odometro" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ignicao" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Temperatura" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TemperaturaSensor1" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TemperaturaSensor2" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TemperaturaSensor3" nillable="true" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnidadeTemperatura" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Altitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="NivelBateria" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="NivelBateriaPrincipal" nillable="true" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnidadeBateria" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NivelSinal" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumeroSatelite" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusEntradas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusSaidas" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataGPS" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataServidor" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Localizacao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Horimetro" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Lista_UltimasPosicoesPorVeiculo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmpCliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Senha" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdentificacaoIntegracao" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ObterLocalizacao" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Lista_UltimasPosicoesPorVeiculoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Lista_UltimasPosicoesPorVeiculoResult" type="tns:ArrayOfPosicao" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Lista_HistoricoPosicoes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmpCliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Senha" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DataInicial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DataFinal" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ObterLocalizacao" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Lista_HistoricoPosicoesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Lista_HistoricoPosicoesResult" type="tns:ArrayOfPosicao" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Lista_HistoricoPosicoesPorVeiculo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmpCliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Senha" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DataInicial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DataFinal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdentificacaoIntegracao" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ObterLocalizacao" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Lista_HistoricoPosicoesPorVeiculoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Lista_HistoricoPosicoesPorVeiculoResult" type="tns:ArrayOfPosicao" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Lista_AlertasPorVeiculo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmpCliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Senha" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DataInicial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DataFinal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdentificacaoIntegracao" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ObterLocalizacao" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Lista_AlertasPorVeiculoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Lista_AlertasPorVeiculoResult" type="tns:ArrayOfPosicao" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Lista_AlertasPorEvento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmpCliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Senha" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DataInicial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DataFinal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdentificacaoIntegracao" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Evento" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ObterLocalizacao" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Lista_AlertasPorEventoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Lista_AlertasPorEventoResult" type="tns:ArrayOfPosicao" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Lista_Evento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmpCliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Senha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Lista_EventoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Lista_EventoResult" type="tns:ArrayOfEvento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEvento">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Evento" nillable="true" type="tns:Evento" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Evento">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id_Evento" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescricaoEvento" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Lista_UltimasPosicoesSoapIn">
+    <wsdl:part name="parameters" element="tns:Lista_UltimasPosicoes" />
+  </wsdl:message>
+  <wsdl:message name="Lista_UltimasPosicoesSoapOut">
+    <wsdl:part name="parameters" element="tns:Lista_UltimasPosicoesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Lista_UltimasPosicoesPorVeiculoSoapIn">
+    <wsdl:part name="parameters" element="tns:Lista_UltimasPosicoesPorVeiculo" />
+  </wsdl:message>
+  <wsdl:message name="Lista_UltimasPosicoesPorVeiculoSoapOut">
+    <wsdl:part name="parameters" element="tns:Lista_UltimasPosicoesPorVeiculoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Lista_HistoricoPosicoesSoapIn">
+    <wsdl:part name="parameters" element="tns:Lista_HistoricoPosicoes" />
+  </wsdl:message>
+  <wsdl:message name="Lista_HistoricoPosicoesSoapOut">
+    <wsdl:part name="parameters" element="tns:Lista_HistoricoPosicoesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Lista_HistoricoPosicoesPorVeiculoSoapIn">
+    <wsdl:part name="parameters" element="tns:Lista_HistoricoPosicoesPorVeiculo" />
+  </wsdl:message>
+  <wsdl:message name="Lista_HistoricoPosicoesPorVeiculoSoapOut">
+    <wsdl:part name="parameters" element="tns:Lista_HistoricoPosicoesPorVeiculoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Lista_AlertasPorVeiculoSoapIn">
+    <wsdl:part name="parameters" element="tns:Lista_AlertasPorVeiculo" />
+  </wsdl:message>
+  <wsdl:message name="Lista_AlertasPorVeiculoSoapOut">
+    <wsdl:part name="parameters" element="tns:Lista_AlertasPorVeiculoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Lista_AlertasPorEventoSoapIn">
+    <wsdl:part name="parameters" element="tns:Lista_AlertasPorEvento" />
+  </wsdl:message>
+  <wsdl:message name="Lista_AlertasPorEventoSoapOut">
+    <wsdl:part name="parameters" element="tns:Lista_AlertasPorEventoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Lista_EventoSoapIn">
+    <wsdl:part name="parameters" element="tns:Lista_Evento" />
+  </wsdl:message>
+  <wsdl:message name="Lista_EventoSoapOut">
+    <wsdl:part name="parameters" element="tns:Lista_EventoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PosicoesSoap">
+    <wsdl:operation name="Lista_UltimasPosicoes">
+      <wsdl:input message="tns:Lista_UltimasPosicoesSoapIn" />
+      <wsdl:output message="tns:Lista_UltimasPosicoesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Lista_UltimasPosicoesPorVeiculo">
+      <wsdl:input message="tns:Lista_UltimasPosicoesPorVeiculoSoapIn" />
+      <wsdl:output message="tns:Lista_UltimasPosicoesPorVeiculoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Lista_HistoricoPosicoes">
+      <wsdl:input message="tns:Lista_HistoricoPosicoesSoapIn" />
+      <wsdl:output message="tns:Lista_HistoricoPosicoesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Lista_HistoricoPosicoesPorVeiculo">
+      <wsdl:input message="tns:Lista_HistoricoPosicoesPorVeiculoSoapIn" />
+      <wsdl:output message="tns:Lista_HistoricoPosicoesPorVeiculoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Lista_AlertasPorVeiculo">
+      <wsdl:input message="tns:Lista_AlertasPorVeiculoSoapIn" />
+      <wsdl:output message="tns:Lista_AlertasPorVeiculoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Lista_AlertasPorEvento">
+      <wsdl:input message="tns:Lista_AlertasPorEventoSoapIn" />
+      <wsdl:output message="tns:Lista_AlertasPorEventoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Lista_Evento">
+      <wsdl:input message="tns:Lista_EventoSoapIn" />
+      <wsdl:output message="tns:Lista_EventoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PosicoesSoap" type="tns:PosicoesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Lista_UltimasPosicoes">
+      <soap:operation soapAction="http://systemsat.gslog.webservice/Lista_UltimasPosicoes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lista_UltimasPosicoesPorVeiculo">
+      <soap:operation soapAction="http://systemsat.gslog.webservice/Lista_UltimasPosicoesPorVeiculo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lista_HistoricoPosicoes">
+      <soap:operation soapAction="http://systemsat.gslog.webservice/Lista_HistoricoPosicoes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lista_HistoricoPosicoesPorVeiculo">
+      <soap:operation soapAction="http://systemsat.gslog.webservice/Lista_HistoricoPosicoesPorVeiculo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lista_AlertasPorVeiculo">
+      <soap:operation soapAction="http://systemsat.gslog.webservice/Lista_AlertasPorVeiculo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lista_AlertasPorEvento">
+      <soap:operation soapAction="http://systemsat.gslog.webservice/Lista_AlertasPorEvento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lista_Evento">
+      <soap:operation soapAction="http://systemsat.gslog.webservice/Lista_Evento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PosicoesSoap12" type="tns:PosicoesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Lista_UltimasPosicoes">
+      <soap12:operation soapAction="http://systemsat.gslog.webservice/Lista_UltimasPosicoes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lista_UltimasPosicoesPorVeiculo">
+      <soap12:operation soapAction="http://systemsat.gslog.webservice/Lista_UltimasPosicoesPorVeiculo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lista_HistoricoPosicoes">
+      <soap12:operation soapAction="http://systemsat.gslog.webservice/Lista_HistoricoPosicoes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lista_HistoricoPosicoesPorVeiculo">
+      <soap12:operation soapAction="http://systemsat.gslog.webservice/Lista_HistoricoPosicoesPorVeiculo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lista_AlertasPorVeiculo">
+      <soap12:operation soapAction="http://systemsat.gslog.webservice/Lista_AlertasPorVeiculo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lista_AlertasPorEvento">
+      <soap12:operation soapAction="http://systemsat.gslog.webservice/Lista_AlertasPorEvento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lista_Evento">
+      <soap12:operation soapAction="http://systemsat.gslog.webservice/Lista_Evento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Posicoes">
+    <wsdl:port name="PosicoesSoap" binding="tns:PosicoesSoap">
+      <soap:address location="http://wsgslog.globalsearch.com.br/v20100/posicoes.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PosicoesSoap12" binding="tns:PosicoesSoap12">
+      <soap12:address location="http://wsgslog.globalsearch.com.br/v20100/posicoes.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
