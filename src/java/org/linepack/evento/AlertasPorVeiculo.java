@@ -1,9 +1,12 @@
 package org.linepack.evento;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import org.linepack.model.Parametro;
+import org.linepack.model.Requisicao;
 import webservice.gslog.systemsat.ListaAlertasPorEventoResponse;
 import webservice.gslog.systemsat.ListaAlertasPorVeiculo;
 import webservice.gslog.systemsat.Posicoes;
@@ -15,15 +18,17 @@ import webservice.gslog.systemsat.PosicoesSoap;
  */
 public class AlertasPorVeiculo {
 
-    public void getAlertasPorVeiculo() throws JAXBException {
+    public void getAlertasPorVeiculo(Parametro parametro, Requisicao requisicao) throws JAXBException {
         ListaAlertasPorVeiculo alertas = new ListaAlertasPorVeiculo();
-        alertas.setEmpCliente("138481");
-        alertas.setLogin("unicampo@totaltrac");
-        alertas.setSenha("unicampo@totaltrac");
-        alertas.setDataInicial("17/05/2016 23:00:00");
-        alertas.setDataFinal("18/05/2016 05:00:00");        
-        //alertas.setIdentificacaoIntegracao("AYP-0877");
-                        
+        alertas.setEmpCliente(parametro.getCodigoClienteTotalTrac().toString());
+        alertas.setLogin(parametro.getLogin());
+        alertas.setSenha(parametro.getSenha());
+        String mask = "dd/MM/yyyy HH:mm:ss";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(mask);
+        alertas.setDataInicial(dateFormat.format(requisicao.getDataHoraInicial()));
+        alertas.setDataFinal(dateFormat.format(requisicao.getDataHoraFinal()));
+
+        //Call remote Method
         Posicoes port = new Posicoes();
         PosicoesSoap soap = port.getPosicoesSoap();
 
@@ -33,11 +38,6 @@ public class AlertasPorVeiculo {
                 soap.listaAlertasPorVeiculo(alertas.getEmpCliente(), alertas.getLogin(),
                         alertas.getSenha(), alertas.getDataInicial(), alertas.getDataFinal(),
                         "", true));
-        
-        JAXBContext context = JAXBContext.newInstance(ListaAlertasPorEventoResponse.class);
-        Marshaller m = context.createMarshaller();        
-        File file = new File("C:\\Users\\Leandro\\Desktop\\RESPOSTA.XML");
-        m.marshal(resposta, file);
 
     }
 

@@ -8,6 +8,7 @@ package org.linepack.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -15,14 +16,16 @@ import javax.persistence.Table;
  * @author Leandro
  */
 @Entity
-@Table(name = "ge_totaltrac_parametros")
+@Table(name = "ge_totaltrac_parametro")
+@NamedQuery(name = "getParametroAtivo", query = "select p from Parametro p where p.isAtivo = 1")
 public class Parametro extends BaseModel implements Serializable {
 
     @Column(name = "empcliente")
     private Integer codigoClienteTotalTrac;
     private String login;
     private String senha;
-    
+    @Column(name = "st_ativo")
+    private Integer isAtivo;
 
     public Integer getCodigoClienteTotalTrac() {
         return codigoClienteTotalTrac;
@@ -47,5 +50,13 @@ public class Parametro extends BaseModel implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-            
+
+    public Integer getIsAtivo() {
+        return isAtivo;
+    }
+
+    public void setIsAtivo(Integer isAtivo) {
+        this.isAtivo = isAtivo;
+    }
+
 }
