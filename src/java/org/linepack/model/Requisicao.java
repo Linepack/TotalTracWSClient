@@ -20,7 +20,11 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "ge_totaltrac_requisicao")
-@NamedQuery(name = "getRequisicaoAtiva", query = "select max(r.dataHoraFinal) from Requisicao r")
+@NamedQuery(name = "getRequisicaoAtiva", query = ""
+        + " select r "
+        + "   from Requisicao r"
+        + "  where r.dataHoraFinal = (select max(d.dataHoraFinal) "
+        + "                             from Requisicao d)")
 public class Requisicao extends BaseModel implements Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)

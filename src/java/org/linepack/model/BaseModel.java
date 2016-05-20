@@ -27,7 +27,7 @@ import javax.persistence.TemporalType;
 public abstract class BaseModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_usuinc")

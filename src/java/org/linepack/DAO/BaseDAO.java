@@ -45,7 +45,9 @@ public class BaseDAO<T> {
     public T getByNamedQuery(String namedQueryName) throws IOException {
         try {
             Query query = entityManager.createNamedQuery(namedQueryName);
-            return (T) query.getSingleResult();
+            Object object = new Object();
+            object = query.getSingleResult();
+            return (T) object;            
         } catch (Exception e) {
             Log.write("Erro buscando NamedQuery: " + namedQueryName + ". Erro:" + e.toString());
         }
