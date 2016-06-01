@@ -8,14 +8,15 @@ O controle do período requisitado é feito pela tabela representada na classe o
 O produto da requisicao ap WS é uma lista de org.linepack.model.Posicao.java, que é persistida no banco de dados logo após a requisicao.
 
 # WSDL 
-http://wsgslog.globalsearch.com.br/v20100/posicoes.asmx?WSDL
+<a href="http://wsgslog.globalsearch.com.br/v20100/posicoes.asmx?WSDL">http://wsgslog.globalsearch.com.br/v20100/posicoes.asmx?WSDL</a>
 
 # Ferramentas Utilizadas
-Jpa 2.1,
-JAX-WS / JAXB,
-GlassFish 4.1.1,
-Oracle 10g,
-
+<ul>
+<li>Jpa 2.1</li>
+<li>JAX-WS / JAXB</li>
+<li>GlassFish 4.1.1</li>
+<li>Oracle 10g</li>
+</ul>
 
 
 
