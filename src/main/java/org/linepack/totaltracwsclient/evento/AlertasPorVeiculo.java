@@ -2,6 +2,7 @@ package org.linepack.totaltracwsclient.evento;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import org.linepack.totaltracwsclient.DAO.PosicaoDAO;
 import org.linepack.totaltracwsclient.DAO.RequisicaoDAO;
@@ -98,7 +99,7 @@ public class AlertasPorVeiculo {
             requisicaoDAO.insert(requisicao);
 
         } catch (Exception e) {
-            Log.write("Erro ao realizar requisicao: " + e.toString());
+            Log.write("Erro ao realizar requisicao: " + Arrays.toString(e.getStackTrace()));
         }
 
     }

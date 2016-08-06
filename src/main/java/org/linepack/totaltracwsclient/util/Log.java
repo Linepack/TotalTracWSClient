@@ -23,7 +23,7 @@ public class Log {
         String stringData = dataFormatada.format(date).replace("/", "");
         String stringDataHora = dataHoraFormatada.format(date);
 
-        File file = new File(stringData + ".log");
+        File file = new File(stringData + "-TotalTracWsClient.log");
         FileWriter fileWriter = new FileWriter(file, true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         bufferedWriter.write(stringDataHora + " -> " + msg);

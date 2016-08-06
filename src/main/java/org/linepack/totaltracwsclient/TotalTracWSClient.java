@@ -1,6 +1,7 @@
 package org.linepack.totaltracwsclient;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
 import javax.ejb.Schedule;
 import javax.ejb.Stateless;
@@ -37,7 +38,7 @@ public class TotalTracWSClient {
             AlertasPorVeiculo alertasPorVeiculo = new AlertasPorVeiculo();                        
             alertasPorVeiculo.getAlertasPorVeiculo(parametro, requisicaoNova);
         } catch (Exception e) {
-            Log.write("Erro na Classe Main: " + e.getMessage());
+            Log.write("Erro na Classe Main: " + Arrays.toString(e.getStackTrace()));            
         }
     }
 }

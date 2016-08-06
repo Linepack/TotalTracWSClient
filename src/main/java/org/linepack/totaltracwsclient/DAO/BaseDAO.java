@@ -6,6 +6,7 @@
 package org.linepack.totaltracwsclient.DAO;
 
 import java.io.IOException;
+import java.util.Arrays;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import org.linepack.totaltracwsclient.util.EntityManagerUtil;
@@ -49,7 +50,7 @@ public class BaseDAO<T> {
             object = query.getSingleResult();
             return (T) object;            
         } catch (Exception e) {
-            Log.write("Erro buscando NamedQuery: " + namedQueryName + ". Erro:" + e.toString());
+            Log.write("Erro buscando NamedQuery: " + namedQueryName + ". Erro:" + Arrays.toString(e.getStackTrace()));
         }
         return null;
     }
